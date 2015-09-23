@@ -1,4 +1,5 @@
 # `<PaperTextarea />`
+[![Circle CI](https://circleci.com/gh/scienceai/paper-textarea.svg?style=svg)](https://circleci.com/gh/scienceai/paper-textarea)
 
 ### Install
 ```
