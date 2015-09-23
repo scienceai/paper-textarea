@@ -27,7 +27,7 @@ import PaperTextarea from 'paper-textarea';
 
 ### Example
 ```js
-<PaperInput
+<PaperTextarea
   name='comment'
   label='Your comment here'
   error={this.state.error ? 'Please enter some text' : ''}

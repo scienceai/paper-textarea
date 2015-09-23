@@ -1,1 +1,1 @@
-module.exports = require('./dist/paper-input');
+module.exports = require('./dist/paper-textarea');
