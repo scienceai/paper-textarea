@@ -1,0 +1,119 @@
+:root {
+  --color_accent: #42A5F5;
+  --color_error: #D34336;
+}
+
+.paper-textarea {
+  position: relative;
+  margin: 20px 0;
+  font-size: 13px;
+  line-height: 18px;
+  width: 100%;
+  letter-spacing: .05em;
+}
+
+.paper-textarea.big {
+  font-size: 16px;
+}
+
+.paper-textarea textarea {
+  resize: none;
+  width: 100%;
+  display: block;
+  margin: 0;
+  border: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+  border-radius: 0px !important;
+  padding: 4px 0px;
+  overflow: hidden;
+  background-color: transparent;
+  box-shadow: none !important;
+  letter-spacing: .05em;
+}
+
+.paper-textarea textarea[disabled] {
+  border-bottom: 1px dashed rgba(0,0,0, 0.12);
+  background-color: transparent;
+}
+
+.paper-textarea textarea ~ label {
+  width: 100%;
+  letter-spacing: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  bottom: 4px;
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.paper-textarea textarea ~label {
+  transition:0.2s ease all;
+}
+
+.paper-textarea textarea:focus {
+  outline: none;
+}
+
+.paper-textarea textarea ~ label:after {
+  content: '';
+  background-color: var(--color_accent);
+  height: 2px;
+  width: 100%;
+  bottom: -4px;
+  opacity:0;
+  position: absolute;
+  transition:.5s ease all;
+  left: 0;
+}
+
+.paper-textarea textarea:focus ~ label:after {
+  width: 100%;
+  opacity:1;
+  left: 0;
+}
+
+.paper-textarea textarea.dirty ~ label {
+  color: rgba(0, 0, 0, 0);
+}
+
+.paper-textarea textarea:focus ~ label,
+.paper-textarea textarea.dirty ~ label {
+  visibility: visible;
+  top: -14px;
+  font-size: 12px;
+}
+
+.paper-textarea textarea.dirty ~ label {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.paper-textarea textarea:focus ~ label {
+  color: var(--color_accent);
+}
+
+.paper-textarea textarea:focus:invalid ~ label {
+  top: -14px;
+  font-size: 12px;
+  color: #d34336;
+}
+
+.paper-textarea textarea:invalid ~label:after {
+  background-color: #d34336;
+}
+
+.paper-textarea textarea:invalid ~.error {
+  visibility: visible;
+}
+
+.paper-textarea textarea:focus:invalid {
+  box-shadow: none;
+  border-color: #d34336;
+}
+
+.paper-textarea .error {
+  float: right;
+  margin-top: 3px;
+  color: #d34336;
+  font-size: 12px;
+  visibility: hidden;
+}
