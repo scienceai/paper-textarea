@@ -1,5 +1,6 @@
 # `<PaperTextarea />`
-[![Circle CI](https://circleci.com/gh/scienceai/paper-textarea.svg?style=svg)](https://circleci.com/gh/scienceai/paper-textarea)
+
+[![Build Status](https://travis-ci.org/scienceai/paper-textarea.svg?branch=master)](https://travis-ci.org/scienceai/paper-textarea)
 
 ### Install
 ```

@@ -12,7 +12,7 @@ export default class PaperTextarea extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      dirty: (('defaultValue' in nextProps) ? !!nextProps.defaultValue : !!nextProps.value) || !!findDOMNode(this.refs.textarea).value,
+      dirty: (('defaultValue' in nextProps) ? !!nextProps.defaultValue : !!nextProps.value) || !!findDOMNode(this.refs.textarea).value
     });
   }
 
