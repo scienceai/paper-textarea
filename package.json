@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/scienceai/paper-textarea",
   "peerDependencies": {
-    "react": ">= 14.0"
+    "react": ">= 0.14.0"
   },
   "devDependencies": {
     "babel-cli": "6.7.5",
