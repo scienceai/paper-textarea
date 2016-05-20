@@ -10,7 +10,11 @@
     "build-css": "postcss --use postcss-cssnext -o dist/paper-textarea.css src/index.css",
     "watch": "npm run watch-js & npm run watch-css",
     "watch-js": "watchify ./example/index.js -t babelify -o ./example/bundle.js -dv",
-    "watch-css": "nodemon -e css -w ./src/ --exec 'npm run build-css'",
+    "watch-css": "nodemon -e css -w ./src/ --exec 'npm run build-example-css'",
+    "build-example": "npm run build-example-js && npm run build-example-css",
+    "build-example-js": "browserify example/index.js -t babelify > example/bundle.js",
+    "build-example-css": "postcss --use postcss-cssnext -o example/bundle.css src/index.css",
+    "gh-pages": "git fetch origin && git checkout gh-pages && git reset --hard origin/gh-pages && git rebase origin/master --force-rebase && npm run build-example && git add . && git commit --amend --no-edit && git push origin gh-pages --force && git checkout master",
     "test": "mocha --compilers js:babel-register"
   },
   "babel": {
@@ -55,6 +59,7 @@
     "babel-preset-react": "6.5.0",
     "babel-register": "6.9.0",
     "babelify": "7.3.0",
+    "browserify": "13.0.1",
     "eslint-config-scienceai": "1.3.0",
     "mocha": "2.4.5",
     "nodemon": "1.9.2",
