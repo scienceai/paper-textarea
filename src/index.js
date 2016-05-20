@@ -156,6 +156,15 @@ export default class PaperTextarea extends React.Component {
         placeholder: undefined,
       };
     }
+    let labelStyles = {};
+    if (floatLabel && dirty) {
+      let height = (this.height && this.height + 9) || 27;
+      let extraPadding = Math.floor((height - 27) / 18.6675) * 8;
+      labelStyles = {
+        WebkitTransform: `scale(0.7) translate3d(0, -${height + extraPadding}px, 0)`,
+        transform: `scale(0.7) translate3d(0, -${height + extraPadding}px, 0)`,
+      };
+    }
 
     return (
       <div className={containerClassNames}>
@@ -169,7 +178,9 @@ export default class PaperTextarea extends React.Component {
           onFocus={this.handleFocus}
           onKeyDown={this.handleKeyDown}
         />
-        <label htmlFor={textareaProps.name}>{label}</label>
+        <label htmlFor={textareaProps.name} style={labelStyles}>
+          {label}
+        </label>
         <span className="border-line" />
         {this.shouldDisplayError() && (
           <span className="error">{error}</span>
