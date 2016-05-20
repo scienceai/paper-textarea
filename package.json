@@ -1,6 +1,6 @@
 {
   "name": "paper-textarea",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Paper Textarea React component",
   "main": "index.js",
   "scripts": {
