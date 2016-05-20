@@ -14,7 +14,7 @@
     "build-example": "npm run build-example-js && npm run build-example-css",
     "build-example-js": "browserify example/index.js -t babelify > example/bundle.js",
     "build-example-css": "postcss --use postcss-cssnext -o example/bundle.css src/index.css",
-    "gh-pages": "git fetch origin && git checkout gh-pages && git reset --hard origin/gh-pages && git rebase origin/master --force-rebase && npm run build-example && git add . && git commit --amend --no-edit && git push origin gh-pages --force && git checkout master",
+    "gh-pages": "git fetch origin && git checkout gh-pages && git reset --hard origin/gh-pages && git rebase origin/master --force-rebase && npm run build-example && mv example/* . && git add . && git commit --amend --no-edit && git push origin gh-pages --force && git checkout master",
     "test": "mocha --compilers js:babel-register"
   },
   "babel": {
