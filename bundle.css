@@ -1,0 +1,142 @@
+.paper-textarea {
+  position: relative;
+  margin: 36px 0;
+  font-size: 16px;
+  line-height: 18px;
+  width: 100%;
+  letter-spacing: .05em;
+}
+
+.paper-textarea textarea {
+  font-size: 16px;
+  resize: none;
+  width: 100%;
+  display: block;
+  margin: 0;
+  border: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+  border-radius: 0px !important;
+  padding: 4px 0px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: none !important;
+  letter-spacing: .05em;
+}
+
+.paper-textarea textarea[disabled] {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.paper-textarea textarea[readonly] {
+  border-bottom: none !important;
+  background-color: rgba(0, 0, 0, 0);
+  pointer-events: none;
+}
+
+.paper-textarea textarea ~ label {
+  width: 100%;
+  letter-spacing: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  bottom: 4px;
+  color: rgba(0, 0, 0, 0.26);
+  -webkit-transform: scale(1) translate3d(0, 0, 0);
+          transform: scale(1) translate3d(0, 0, 0);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transition: color 200ms ease-in, -webkit-transform 200ms ease-in;
+  transition: color 200ms ease-in, -webkit-transform 200ms ease-in;
+  transition: color 200ms ease-in, transform 200ms ease-in;
+  transition: color 200ms ease-in, transform 200ms ease-in, -webkit-transform 200ms ease-in;
+}
+
+.paper-textarea textarea:focus {
+  outline: none;
+}
+
+.paper-textarea textarea.dirty ~ label {
+  /* hide the label when dirty */
+  visibility: hidden;
+  color: rgba(0, 0, 0, 0);
+}
+
+.paper-textarea.float-label textarea:focus ~ label,
+.paper-textarea.float-label textarea.dirty ~ label {
+  visibility: visible;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transition: color 200ms ease-out, -webkit-transform 200ms ease-out;
+  transition: color 200ms ease-out, -webkit-transform 200ms ease-out;
+  transition: color 200ms ease-out, transform 200ms ease-out;
+  transition: color 200ms ease-out, transform 200ms ease-out, -webkit-transform 200ms ease-out;
+  -webkit-transform: scale(0.7) translate3d(0, -27px, 0);
+          transform: scale(0.7) translate3d(0, -27px, 0);
+}
+
+.paper-textarea.float-label textarea[readonly] ~ label,
+.paper-textarea.float-label textarea.dirty ~ label {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.paper-textarea.float-label textarea[readonly]:focus ~ label {
+  color: rgba(0, 0, 0, 0.26);
+  -webkit-transform: none;
+          transform: none;
+}
+
+.paper-textarea.float-label textarea:focus ~ label {
+  color: #42A5F5;
+}
+
+.paper-textarea.float-label textarea.touched:focus:invalid ~ label {
+  color: #D34336;
+}
+
+.paper-textarea textarea ~ .border-line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: inherit;
+  height: 2px;
+  background-color: #42A5F5;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: color 200ms ease-in, -webkit-transform 200ms ease-in;
+  transition: color 200ms ease-in, -webkit-transform 200ms ease-in;
+  transition: color 200ms ease-in, transform 200ms ease-in;
+  transition: color 200ms ease-in, transform 200ms ease-in, -webkit-transform 200ms ease-in;
+}
+
+.paper-textarea textarea:invalid ~ .border-line {
+  background-color: #D34336;
+}
+
+.paper-textarea textarea:focus ~ .border-line {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: color 200ms ease-out, -webkit-transform 200ms ease-out;
+  transition: color 200ms ease-out, -webkit-transform 200ms ease-out;
+  transition: color 200ms ease-out, transform 200ms ease-out;
+  transition: color 200ms ease-out, transform 200ms ease-out, -webkit-transform 200ms ease-out;
+}
+
+.paper-textarea textarea[readonly] ~ .border-line {
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-transform: none;
+          transform: none;
+}
+
+.paper-textarea .error {
+  float: left;
+  margin-top: 3px;
+  color: #D34336;
+  font-size: 12px;
+  letter-spacing: normal;
+}
+
+.paper-textarea textarea.touched:focus:invalid {
+  box-shadow: none;
+  border-color: #D34336;
+}
