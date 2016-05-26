@@ -19499,6 +19499,7 @@ var PaperTextarea = function (_React$Component) {
     _this.handleFocus = _this.handleFocus.bind(_this);
     _this.handleKeyDown = _this.handleKeyDown.bind(_this);
     _this.recalculateSize = _this.recalculateSize.bind(_this);
+    _this.timeout = null;
     return _this;
   }
 
@@ -19533,6 +19534,9 @@ var PaperTextarea = function (_React$Component) {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       window.removeEventListener('resize', this.recalculateSize);
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+      }
     }
   }, {
     key: 'getValue',
@@ -19577,7 +19581,7 @@ var PaperTextarea = function (_React$Component) {
       // when deleting the entire content of the textarea
       if (!this._value) {
         this.setState({ disableTransition: true }, function () {
-          setTimeout(function () {
+          _this2.timeout = setTimeout(function () {
             _this2.setState({ disableTransition: false });
           }, 0);
         });
