@@ -16,6 +16,7 @@ export default class PaperTextarea extends React.Component {
     this.handleFocus = this.handleFocus.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.recalculateSize = this.recalculateSize.bind(this);
+    this.timeout = null;
   }
 
   componentDidMount() {
@@ -44,6 +45,9 @@ export default class PaperTextarea extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.recalculateSize);
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
   }
 
   getValue() {
@@ -88,7 +92,7 @@ export default class PaperTextarea extends React.Component {
     // when deleting the entire content of the textarea
     if (!this._value) {
       this.setState({ disableTransition: true }, () => {
-        setTimeout(() => {
+        this.timeout = setTimeout(() => {
           this.setState({ disableTransition: false });
         }, 0);
       });
