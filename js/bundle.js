@@ -19559,6 +19559,8 @@ var PaperTextarea = function (_React$Component) {
   }, {
     key: 'handleChange',
     value: function handleChange(e) {
+      var _this2 = this;
+
       this._value = e.target.value;
       var prevHeight = this.height;
       var height = this.height = this.recalculateSize();
@@ -19570,6 +19572,16 @@ var PaperTextarea = function (_React$Component) {
       }
 
       this.setState({ dirty: !!this._value });
+
+      // Disable transition to prevent the label from flying around
+      // when deleting the entire content of the textarea
+      if (!this._value) {
+        this.setState({ disableTransition: true }, function () {
+          setTimeout(function () {
+            _this2.setState({ disableTransition: false });
+          }, 0);
+        });
+      }
     }
   }, {
     key: 'handleFocus',
@@ -19635,6 +19647,7 @@ var PaperTextarea = function (_React$Component) {
       var dirty = _state.dirty;
       var touched = _state.touched;
       var focused = _state.focused;
+      var disableTransition = _state.disableTransition;
 
       var containerClassNames = (0, _classnames3.default)(_defineProperty({
         'paper-textarea': true,
@@ -19650,13 +19663,18 @@ var PaperTextarea = function (_React$Component) {
         });
       }
       var labelStyles = {};
-      if (floatLabel && dirty) {
-        var height = this.height && this.height + 9 || 27;
-        var extraPadding = Math.floor((height - 27) / 18.6675) * 8;
-        labelStyles = {
-          WebkitTransform: 'scale(0.7) translate3d(0, -' + (height + extraPadding) + 'px, 0)',
-          transform: 'scale(0.7) translate3d(0, -' + (height + extraPadding) + 'px, 0)'
-        };
+      if (floatLabel) {
+        if (dirty) {
+          var height = this.height && this.height + 9 || 27;
+          var extraPadding = (height - 27) / 18.6675 * 8;
+          labelStyles = {
+            WebkitTransform: 'scale(0.7) translate3d(0, -' + (height + extraPadding) + 'px, 0)',
+            transform: 'scale(0.7) translate3d(0, -' + (height + extraPadding) + 'px, 0)',
+            transition: 'none'
+          };
+        } else if (disableTransition) {
+          labelStyles.transition = 'none';
+        }
       }
 
       return _react2.default.createElement(
@@ -19716,5 +19734,6 @@ PaperTextarea.propTypes = {
 PaperTextarea.defaultProps = {
   floatLabel: true
 };
+module.exports = exports['default'];
 
 },{"classnames":2,"react":168,"react-dom":30}]},{},[1]);
