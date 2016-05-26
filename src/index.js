@@ -83,6 +83,16 @@ export default class PaperTextarea extends React.Component {
     }
 
     this.setState({ dirty: !!this._value });
+
+    // Disable transition to prevent the label from flying around
+    // when deleting the entire content of the textarea
+    if (!this._value) {
+      this.setState({ disableTransition: true }, () => {
+        setTimeout(() => {
+          this.setState({ disableTransition: false });
+        }, 0);
+      });
+    }
   }
 
   handleFocus(e) {
@@ -140,7 +150,7 @@ export default class PaperTextarea extends React.Component {
 
   render() {
     let { floatLabel, className, label, error, ...textareaProps } = this.props;
-    let { dirty, touched, focused } = this.state;
+    let { dirty, touched, focused, disableTransition } = this.state;
     let containerClassNames = classnames({
       'paper-textarea': true,
       'float-label': !!floatLabel,
@@ -157,13 +167,18 @@ export default class PaperTextarea extends React.Component {
       };
     }
     let labelStyles = {};
-    if (floatLabel && dirty) {
-      let height = (this.height && this.height + 9) || 27;
-      let extraPadding = Math.floor((height - 27) / 18.6675) * 8;
-      labelStyles = {
-        WebkitTransform: `scale(0.7) translate3d(0, -${height + extraPadding}px, 0)`,
-        transform: `scale(0.7) translate3d(0, -${height + extraPadding}px, 0)`,
-      };
+    if (floatLabel) {
+      if (dirty) {
+        let height = (this.height && this.height + 9) || 27;
+        let extraPadding = ((height - 27) / 18.6675) * 8;
+        labelStyles = {
+          WebkitTransform: `scale(0.7) translate3d(0, -${height + extraPadding}px, 0)`,
+          transform: `scale(0.7) translate3d(0, -${height + extraPadding}px, 0)`,
+          transition: 'none',
+        };
+      } else if (disableTransition) {
+        labelStyles.transition = 'none';
+      }
     }
 
     return (
