@@ -27,6 +27,9 @@
       "add-module-exports"
     ]
   },
+  "eslintConfig": {
+    "extends": "scienceai"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/scienceai/paper-textarea.git"
@@ -63,8 +66,8 @@
     "babelify": "7.3.0",
     "browserify": "13.1.0",
     "eslint-config-scienceai": "2.4.0",
-    "mocha": "3.1.0",
-    "nodemon": "1.10.2",
+    "mocha": "3.1.2",
+    "nodemon": "1.11.0",
     "postcss": "5.2.4",
     "postcss-cli": "2.6.0",
     "postcss-cssnext": "2.8.0",
