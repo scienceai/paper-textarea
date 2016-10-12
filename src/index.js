@@ -12,7 +12,7 @@ export default class PaperTextarea extends React.Component {
       focused:  false,
     };
     ['handleBlurCapture', 'handleChange', 'handleFocus', 'handleFocus',
-      'recalculateSize'].forEach(meth => this[meth].bind(this));
+      'recalculateSize'].forEach(meth => (this[meth] = this[meth].bind(this)));
     this.timeout = null;
     this.$el = null;
     this.height = 0;
