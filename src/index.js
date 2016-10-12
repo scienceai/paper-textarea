@@ -11,7 +11,7 @@ export default class PaperTextarea extends React.Component {
       dirty:    !!this._value,
       focused:  false,
     };
-    ['handleBlurCapture', 'handleChange', 'handleFocus', 'handleFocus',
+    ['handleBlurCapture', 'handleChange', 'handleFocus', 'handleKeyDown',
       'recalculateSize'].forEach(meth => (this[meth] = this[meth].bind(this)));
     this.timeout = null;
     this.$el = null;
